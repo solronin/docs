@@ -1,107 +1,45 @@
 ---
-title: 'Development'
-description: 'Preview changes locally to update your docs'
+title: "Key Features"
 ---
 
-<Info>
-  **Prerequisite**: Please install Node.js (version 19 or higher) before proceeding. <br />
-  Please upgrade to ```docs.json``` before proceeding and delete the legacy ```mint.json``` file.
-</Info>
+### **1. AI-Driven Arbitrage Execution**
 
-Follow these steps to install and run Mintlify on your operating system:
+* Scans multiple Solana-based DEXs (Orca, Raydium, Phoenix, etc.) for arbitrage opportunities.
 
-**Step 1**: Install Mintlify:
+* Utilizes a Reinforcement Learning (RL) model to determine profitable trade execution after accounting for fees and slippage.
 
-<CodeGroup>
+* Supports flash loans (if feasible) to execute trades without upfront capital.
 
-  ```bash npm
-  npm i -g mintlify
-  ```
+### **2. MEV Attack Detection & Protection**
 
-```bash yarn
-yarn global add mintlify
-```
+* Anomaly detection AI monitors transaction patterns to identify frontrunning and sandwich attacks.
 
-</CodeGroup>
+* Routes trades through alternative liquidity pools or delays execution to minimize loss.
 
-**Step 2**: Navigate to the docs directory (where the `docs.json` file is located) and execute the following command:
+* Integrates with Jito-Solana (optional) for MEV-aware transaction routing.
 
-```bash
-mintlify dev
-```
+### **3. Solana Native Smart Contracts**
 
-A local preview of your documentation will be available at `http://localhost:3000`.
+* Rust-based Solana program executes arbitrage trades and protects against MEV attacks.
 
-### Custom Ports
+* On-chain AI-powered risk assessment before executing transactions.
 
-By default, Mintlify uses port 3000. You can customize the port Mintlify runs on by using the `--port` flag. To run Mintlify on port 3333, for instance, use this command:
+* Stores executed trades and maintains a profitability log.
 
-```bash
-mintlify dev --port 3333
-```
+### **4. Real-Time Liquidity & Pricing Data**
 
-If you attempt to run Mintlify on a port that's already in use, it will use the next available port:
+* Fetches real-time price feeds from **Pyth, Switchboard, and on-chain DEX APIs**.
 
-```md
-Port 3000 is already in use. Trying 3001 instead.
-```
+* Monitors liquidity depth to avoid slippage traps.
 
-## Mintlify Versions
+* Uses AI to predict short-term price fluctuations for optimal trade timing.
 
-Please note that each CLI release is associated with a specific version of Mintlify. If your local website doesn't align with the production version, please update the CLI:
+### **5. API & SDK for Developers**
 
-<CodeGroup>
+* Provides an easy-to-integrate SDK or API for:
 
-```bash npm
-npm i -g mintlify@latest
-```
+  * Wallets (e.g., Phantom, Solflare) to offer MEV-protected swaps.
 
-```bash yarn
-yarn global upgrade mintlify
-```
+  * DeFi protocols to automate arbitrage execution.
 
-</CodeGroup>
-
-## Validating Links
-
-The CLI can assist with validating reference links made in your documentation. To identify any broken links, use the following command:
-
-```bash
-mintlify broken-links
-```
-
-## Deployment
-
-<Tip>
-  Unlimited editors available under the [Pro
-  Plan](https://mintlify.com/pricing) and above.
-</Tip>
-
-If the deployment is successful, you should see the following:
-
-<Frame>
-  <img src="/images/checks-passed.png" style={{ borderRadius: '0.5rem' }} />
-</Frame>
-
-## Code Formatting
-
-We suggest using extensions on your IDE to recognize and format MDX. If you're a VSCode user, consider the [MDX VSCode extension](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx) for syntax highlighting, and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) for code formatting.
-
-## Troubleshooting
-
-<AccordionGroup>
-  <Accordion title='Error: Could not load the "sharp" module using the darwin-arm64 runtime'>
-
-    This may be due to an outdated version of node. Try the following:
-    1. Remove the currently-installed version of mintlify: `npm remove -g mintlify`
-    2. Upgrade to Node v19 or higher.
-    3. Reinstall mintlify: `npm install -g mintlify`
-  </Accordion>
-
-  <Accordion title="Issue: Encountering an unknown error">
-  
-    Solution: Go to the root of your device and delete the \~/.mintlify folder. Afterwards, run `mintlify dev` again.
-  </Accordion>
-</AccordionGroup>
-
-Curious about what changed in the CLI version? [Check out the CLI changelog.](https://www.npmjs.com/package/mintlify?activeTab=versions)
+  * Traders to access real-time risk-adjusted arbitrage signals.

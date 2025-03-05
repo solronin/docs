@@ -1,0 +1,46 @@
+---
+description: "Description of your new file."
+title: "system Architecture"
+---
+
+## **MVP Architecture**
+
+#### **Components:**
+
+1. **Arbitrage Scanner** (TypeScript + Web3.js)
+
+   * Fetches price data from Orca, Raydium, and Phoenix.
+
+   * Identifies profitable arbitrage opportunities.
+
+2. **Solana Smart Contract** (Rust + Anchor)
+
+   * Executes swaps atomically between DEXs.
+
+   * Enforces profitability constraints before execution.
+
+3. **Basic MEV Protection**
+
+   * Monitors mempool transaction order.
+
+   * Uses randomized delay or Jito-Solana integration.
+
+4. **Data Feeds**
+
+   * Pyth, Switchboard, and DEX APIs provide real-time pricing.
+
+5. **MVP Frontend (Optional)**
+
+   * React + TailwindCSS UI for displaying arbitrage opportunities.
+
+#### **MVP User Flow:**
+
+1. **User connects wallet** (Phantom/Solflare) → Grants permission.
+
+2. **Scanner fetches prices** → Identifies arbitrage opportunities.
+
+3. **Profitable trade detected** → Sent to Solana smart contract.
+
+4. **Smart contract executes trade** → Swaps between DEXs atomically.
+
+5. **Profit/loss calculated** → Funds deposited back to the user's wallet.
